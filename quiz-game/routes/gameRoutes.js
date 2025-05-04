@@ -16,7 +16,7 @@ router.post('/start', auth, async (req, res) => {
     } else {
         session.players.push(player);
         session.status = 'ongoing';
-        session.questions = await Question.aggregate([{ $sample: { size: 4 } }]);
+        session.questions = await Question.aggregate([{ $sample: { size: 10 } }]);
     }
 
     await session.save();
